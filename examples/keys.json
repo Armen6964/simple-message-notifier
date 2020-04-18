@@ -1,0 +1,24 @@
+[
+  {
+    "clientId":1,
+    "push_web":"dW5mSGcenkTIO4u-yUfasB:APA91bHHMhQh6DVjMiBCZzozZnS13VsbRdzpQta1cq7OPG5vocKPbn1FyRN0wLXjdewteNOAmGlfkBbQPldYsmjXD7XiqL0-fGtUoDEf9KKsufmMwPBBb3gxKqklru31m3apNodK5I5z",
+    "push_android": "",
+    "push_ios": "",
+    "push_windows": "",
+    "push_macOS" : "",
+    "emails" : "root@inorain.com",
+    "phone_number" : "",
+    "options" : {}
+  },
+  {
+    "clientId":2,
+    "push_web":"e8kWcM6-oMdH7C-zachXTa:APA91bHfFMkGrXazkxDry5yNdeNHSOzx6eJ5zqBBGXjd09tLFw7d53pCOM3RPk_R_hbLFeRm1AOnGKKeIcqmQxNSC4KDNu38RPnsmckrmGCbHLvpKinnSKa-GHGYoWsBHJBdfPfJAFfy",
+    "push_android": "",
+    "push_ios": "",
+    "push_windows": "",
+    "push_macOS": "",
+    "emails" : "grigor@inorain.com",
+    "phone_number" : "+37498041171",
+    "options" : {}
+  }
+]

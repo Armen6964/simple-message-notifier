@@ -1,0 +1,21 @@
+{
+  "name": "simple-message-notifier",
+  "version": "1.0.0",
+  "description": "Service for sending emails,phone,push and socket notifications to client side",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Armen Hakobyan",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^8.10.0",
+    "inologger": "^1.2.0",
+    "nodemailer": "^6.4.6",
+    "sequelize": "^5.21.6",
+    "sequlizeinoutils": "^1.2.7",
+    "socket.io": "^2.3.0",
+    "twilio": "^3.42.2",
+    "tz-maker": "^1.0.4"
+  }
+}
