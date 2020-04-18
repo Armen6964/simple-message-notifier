@@ -31,24 +31,15 @@
   `logging: false //Enable/Disable logging in console from sequelize`
  `;`
  
- `{`
-     
-     `intervalInSeconds : 2,`
-     
+ `{` 
+     `intervalInSeconds : 2,` 
      `https : {`
-         
          `isEnabled : true, //enable or disable https`
-          
          `keys : {`
-     
              `ca : fs.readFileSync(__dirname+"/certs/ca.pem","utf-8"),` //setup path to your real ca.pem file
-             
              `private : fs.readFileSync(__dirname+"/certs/private.key","utf-8"),` //setup path to your real private.pem file
-            
              `cert : fs.readFileSync(__dirname+"/certs/cert.pem","utf-8")` //setup path to your real cert.pem file
-     
         `}`
-     
      `},`
  `};`
 

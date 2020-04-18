@@ -6,7 +6,7 @@
     "push_ios": "",
     "push_windows": "",
     "push_macOS" : "",
-    "emails" : "root@inorain.com",
+    "emails" : "",
     "phone_number" : "",
     "options" : {}
   },
@@ -17,8 +17,8 @@
     "push_ios": "",
     "push_windows": "",
     "push_macOS": "",
-    "emails" : "grigor@inorain.com",
-    "phone_number" : "+37498041171",
+    "emails" : "",
+    "phone_number" : "",
     "options" : {}
   }
 ]
