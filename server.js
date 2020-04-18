@@ -119,14 +119,14 @@ function sendInDay(delivery,recipients,data,tz,row) {
     let nowDate = new TZ(new Date(),tz);
     nowDate.convert();
     if (nowDate.date > delivery){
-        send(recipients,data);
+        send(recipients,data,false,false);
         row.update({delivery:delivery.setDate(delivery.getDate()+1)})
     }
 }
 
 function sendMessagesImmediately(recipients,data,row) {
     log.info("SENDING MASSAGE NOW...");
-    send(recipients,data,row);
+    send(recipients,data,row,true);
 }
 
 function sendOfflineMessages(data,push_web,emails,phone_number) {
@@ -147,7 +147,7 @@ function sendOfflineMessages(data,push_web,emails,phone_number) {
     }
 }
 
-function send(recipients,data,row) {
+function send(recipients,data,row,checkSocket) {
     for (let i = 0; i < recipients.length;i++){
         let clientId = recipients[i].clientId;
         let emails = recipients[i].emails;
@@ -158,6 +158,11 @@ function send(recipients,data,row) {
         let push_macOS = recipients[i].push_macOS;
         let phone_number = recipients[i].phone_number;
         let options = recipients[i].options;
+
+        if (!checkSocket){
+            sendOfflineMessages(data,push_web,emails,phone_number);
+            continue;
+        }
 
         if (CLIENTS_LIVE[clientId]){
             let socket = io.sockets.connected[CLIENTS_LIVE[clientId].socketId];
@@ -184,7 +189,7 @@ function sendAfterSomeDate(delivery,recipients,data,tz,row) {
     let newDate = new TZ(new Date(),tz);
     newDate.convert();
     if (newDate.date > delivery){
-        send(recipients,data,row);
+        send(recipients,data,row,false);
     }else{
         log.info("No data to send...")
     }
@@ -195,7 +200,7 @@ function sendInMonth(delivery,recipients,data,tz,row) {
     let nowDate = new TZ(new Date(),tz);
     nowDate.convert();
     if (nowDate.date > delivery){
-        send(recipients,data);
+        send(recipients,data,false,false);
         row.update({delivery:delivery.setMonth(delivery.getMonth()+1)})
     }
 }
@@ -206,7 +211,7 @@ function sendInYear(delivery,recipients,data,tz,row) {
     let nowDate = new TZ(new Date(),tz);
     nowDate.convert();
     if (nowDate.date > delivery){
-        send(recipients,data);
+        send(recipients,data,false,false);
         row.update({delivery:delivery.setFullYear(delivery.getFullYear()+1)})
     }
 }

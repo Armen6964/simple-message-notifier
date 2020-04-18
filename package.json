@@ -1,6 +1,6 @@
 {
   "name": "simple-message-notifier",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Service for sending emails,phone,push and socket notifications to client side",
   "main": "server.js",
   "scripts": {
