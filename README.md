@@ -64,9 +64,30 @@
   <li>in right side popup choose json and press create</li>
   <li>rename file to **google-configs.json**</li>
   <li>copy file and past it to project **FirebaseMessaging/configs/** folder</li>
+  <li>open **FirebaseMessaging/configs/configs.js** isEnabled to **true**</li>
 </ol>
 
 
+<h3>Email messaging configuration</h3>
+
+<ol>
+  <li>open **EmailMessaging/configs/index.js**</li>
+  <li>in configs.smtps array add you'r smtp credentials</li>
+  <li>set enabled to **true** in config file</li>
+</ol>
+
+
+<h3>Sms messaging configurations with twilio.com</h3>
+
+<ol>
+  <li>open **https://twilio.com** and register</li>
+  <li>after registration open **https://www.twilio.com/console/project/settings** and 
+      copy you'r account sid and auth token from account twilio also wile give you phone number
+  </li>
+  <li>open in project **TwillioSMsMessaging/config.js**</li>
+  <li>update from to you'r phone number and update accountSid and authToken with your's</li>
+  <li>set enabled to true in config file</li>
+</ol>
 
 <b>TODO list</b>
 <ul>
