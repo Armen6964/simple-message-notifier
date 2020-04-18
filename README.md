@@ -82,7 +82,7 @@
 <ol>
   <li>open **https://twilio.com** and register</li>
   <li>after registration open **https://www.twilio.com/console/project/settings** and 
-      copy you'r account sid and auth token from account twilio also wile give you phone number
+      copy you'r account sid and auth token from account.. twilio also wile give you phone number
   </li>
   <li>open in project **TwillioSMsMessaging/config.js**</li>
   <li>update from to you'r phone number and update accountSid and authToken with your's</li>
@@ -95,10 +95,16 @@
    <li><del>Google firebase implementation</del></li>
    <li><del>Web push notification</del></li> 
    <li><del>Socket messaging</del></li> 
-   <li><del>SMS notifications with twillo</del></li> 
+   <li><del>SMS notifications with twilio</del></li> 
    <li><del>Email notifications</del></li>
    <li><del>Examples on web how to deal with server</del></li>
-   <li>ISO notifications</li>
+   <li><del>Scheduled messages every day</del></li>
+   <li><del>Scheduled messages every year</del></li>
+   <li><del>Scheduled messages every month</del></li>
+   <li><del>Scheduled messages after some date</del></li>
+   <li><del>Immediately messages</del></li>
+   
+   <li>iOS notifications</li>
    <li>Android mobile notification</li>
    <li>Windows notification</li>
    <li>MacOs notification</li>
