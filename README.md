@@ -188,6 +188,32 @@
 
 <h4>Examples with request in popular languages you can find in /examples/request</h4>
 
+
+<h3> Socket.io simple api</h3>
+
+<p>This api is implemented for keeping server resources for immediately notifications </p>
+<p>If client side is connected to socket it will receive immediately messages by socket if
+ not connected then client will receive information by sms,push and email</p>
+<h4>How to connect with socket?</h4>
+
+<p>
+    From client side after socket.io is connected send event **join** to server
+    
+     let object = {id : 1,name : 'Name',surname : 'Surname'}
+     socket.emit("join",object)
+</p>
+
+<p>
+    Connection confirmation from server you can handle by event **connected**    
+    
+     socket.on("connected",(data)=>{
+        console.log("SOCKET CONNECTED WITH SERVER...");
+        console.log(data);
+     });
+
+</p>
+
+
 <b>TODO list</b>
 <ul>
    <li><del>Https support with minimal configs</del></li>
