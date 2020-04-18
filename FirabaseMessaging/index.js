@@ -1,6 +1,7 @@
 const admin = require("firebase-admin");
 const fs = require("fs");
-const options = JSON.parse(fs.readFileSync(__dirname+"/configs/Maps-adaa308f7e81.json"));
+const config = require("./configs/configs");
+const options = JSON.parse(fs.readFileSync(__dirname+"/configs/google-configs.json"));
 
 const app = admin.initializeApp({
     credential: admin.credential.cert(options),
@@ -9,11 +10,14 @@ const app = admin.initializeApp({
 const messaging = app.messaging();
 
 async function sendPushForce(data, token) {
+    if (!config.isEnabled) return;
     let message = {data, token,};
     await messaging.send(message);
 }
 
 async function sendMultipleMessages(options) {
+    if (!config.isEnabled) return;
+
     let tokens = options.tokens;
     let len = tokens.length;
 

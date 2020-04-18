@@ -4,6 +4,7 @@ const client = new twilio(config.accountSid, config.authToken);
 
 
 function sendMessage(body,to,cb){
+    if (!config.enabled) return;
     client.messages.create({
         body: body,
         to: to,
@@ -22,6 +23,7 @@ function sendMessage(body,to,cb){
 }
 
 async function sendMessageForce(body,to){
+    if (!config.enabled) return;
     await client.messages.create({body: body, to: to, from: config.from})
 }
 
