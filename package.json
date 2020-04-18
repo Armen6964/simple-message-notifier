@@ -1,6 +1,6 @@
 {
   "name": "simple-message-notifier",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Service for sending emails,phone,push and socket notifications to client side",
   "main": "server.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "type" : "git",
     "url" : "https://github.com/Armen6964/simple-message-notifier.git"
   },
+  "keywords": ["push","fireabes","twilio","sms","socket","notification","mailing"],
   "homepage": "https://github.com/Armen6964/simple-message-notifier/blob/master/README.md",
   "dependencies": {
     "firebase-admin": "^8.10.0",
