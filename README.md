@@ -89,6 +89,105 @@
   <li>set enabled to true in config file</li>
 </ol>
 
+
+<h3>Request to server for adding new message to Queues</h3>
+
+<p>Request url</p>
+
+`host : https://{you'r host}:{your'r port}/add`
+
+<p>Parameters</p>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Value</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>sender</td>
+            <td>Name of sender service or user</td>
+            <td>string(default value is UNKNOWN)</td>
+        </tr>
+        <tr>
+            <td>*tz</td>
+            <td>+4,-1,+2</td>
+            <td>string(timezone of the clients)</td>
+        </tr>
+        <tr>
+            <td>*ip</td>
+            <td>192.168.0.1</td>
+            <td>string (Ip address of sender)</td>
+        </tr>
+        <tr>
+            <td>message</td>
+            <td>My cool notification</td>
+            <td>string(message body)</td>
+        </tr>
+        <tr>
+            <td>keyStorage</td>
+            <td>["data":{}]</td>
+            <td>JSON(data that will return to client with socket body)</td>
+        </tr>
+        <tr>
+            <td>deliveryDate</td>
+            <td>2020-04-18 15:40:10</td>
+            <td>Date</td>
+        </tr>
+         <tr>
+            <td>*schedulingTypeId</td>
+            <td>
+                <ul>
+                    <li>1. immediately send message</li>
+                    <li>2. sending message after deliveryDate</li>
+                    <li>3. sending message every day at time of deliverDate</li>
+                    <li>4. sending message every month at time of deliveryDate</li>
+                    <li>5. sending message every year at time of deliveryDate</li>
+                </ul>
+            </td>
+            <td>integer(Scheduling type)</td>
+        </tr>
+         <tr>
+            <td>title</td>
+            <td>MyMessage</td>
+            <td>string(Title of notification and name of socket event that can't be handled in client side)</td>
+        </tr>
+         <tr>
+            <td>recipients</td>
+            <td>
+            
+                        [{
+                 
+                                   "clientId": 1, 
+                                   
+                                   "push_web": "",
+                                   
+                                   "push_android": "",
+                                   
+                                   "push_ios": "",
+                                   
+                                   "push_windows": "",
+                                   
+                                   "push_macOS": "",
+                                   
+                                   "emails": "example@example.com",
+                                   
+                                   "phone_number": "+3740000000",
+                                   
+                                   "options": {}
+                                  
+                                  }]
+</td>
+            <td>Array of object with recipients list</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Examples with request in popular languages you can find in /examples/request</h4>
+
 <b>TODO list</b>
 <ul>
    <li><del>Https support with minimal configs</del></li>
