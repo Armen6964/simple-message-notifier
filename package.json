@@ -1,6 +1,6 @@
 {
   "name": "simple-message-notifier",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Service for sending emails,phone,push and socket notifications to client side",
   "main": "server.js",
   "scripts": {
@@ -8,6 +8,11 @@
   },
   "author": "Armen Hakobyan",
   "license": "ISC",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Armen6964/simple-message-notifier.git"
+  },
+  "homepage": "https://github.com/Armen6964/simple-message-notifier/blob/master/README.md",
   "dependencies": {
     "firebase-admin": "^8.10.0",
     "inologger": "^1.2.0",

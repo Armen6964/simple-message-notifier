@@ -14,7 +14,7 @@
 
 `open ./config/global.js file`
 
-`const port = 8020; //change you'r server host here`
+`const port = 8020; //change you'r server port here`
 
 `{`
 
@@ -211,6 +211,19 @@
         console.log(data);
      });
 
+</p>
+
+<p>How to handel socket io server events on client side?</p>
+<p>{title} of the message is the event name for handling</p>
+
+<p>Example...</p>
+<p>
+    You have request to add new notification queue by title **example** you can handle
+    
+    socket.on("example",(data=>{
+        console.log(data);
+    })
+    
 </p>
 
 

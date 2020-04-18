@@ -1,20 +1,20 @@
 const nodemailer = require("nodemailer");
 const Config = require("./configs/index");
 const fs = require("fs");
-function getRandom(){ return Math.floor(Math.random() * Config.smtps.length-1) }
+function getRandom(){ return Math.floor(Math.random() * 1) }
 
 async function emails(service_name,message,to,subject){
     if (!Config.enabled) return;
     let mess = fs.readFileSync(__dirname+"/tamplates/1.html","utf-8")
         .replace('((message))',message);
-
+    let rnd = getRandom();
     nodemailer.createTestAccount((err, account)=>{
-        let rnd = getRandom();
+
         let  transporter = nodemailer.createTransport({
             host: Config.smtps[rnd].host,
             port: Config.smtps[rnd].port,
             secure: Config.smtps[rnd].secure,
-            auth: {user: Config.smtps[rnd].username, pass: Config[rnd].password},
+            auth: {user: Config.smtps[rnd].username, pass: Config.smtps[rnd].password},
             tls : { rejectUnauthorized : Config.smtps[rnd].rejectUnauthorized}
         });
 
