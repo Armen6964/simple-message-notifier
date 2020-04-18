@@ -7,21 +7,15 @@
 </head>
 <body>
     <h1 style="color: green" id="status"></h1>
-    <button onclick="connect({
-        id : 1,
-        name : 'Armen',
-        surname : 'Hakobyan',
-    })">CLIENT 1 CONNECT</button>
 
-    <button onclick="connect({
-        id : 2,
-        name : 'GRIGOR',
-        surname : 'GHAZARYAN'
-    })">CLIENT 2 CONNECT</button>
+    <button onclick="connect({id : 1,name : 'Armen',surname : 'Hakobyan'})">CLIENT 1 CONNECT</button>
+    <button onclick="connect({id : 2,name : 'GRIGOR',surname : 'GHAZARYAN'})">CLIENT 2 CONNECT</button>
 
-<h1 id="token"></h1>
+    <h1 id="token"></h1>
+
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
+
     <script>
 
         const socket = io.connect("https://192.168.1.170:8020");
@@ -60,6 +54,7 @@
         firebase.initializeApp(firebaseConfig);
 
         const messaging = firebase.messaging();
+
         messaging.usePublicVapidKey("BAV4S-DlF5L97aTyV6jsJjLBF52_sfm-fyZ_4bkq-09cGR_vgeEVLNhSrr7wzPSRCgaCvVi_eRJQJdr6xozWDS4");
 
 
@@ -81,7 +76,6 @@
                 console.log('Token refreshed.');
                 sendTokenToServer(refreshedToken);
                 document.getElementById("token").innerHTML = refreshedToken;
-
             }).catch((err) => {
                 console.log( err);
             });
@@ -93,7 +87,7 @@
         });
 
         function sendTokenToServer(token) {
-           //SEND TOKEN TO SERVER IF NOT SENT
+           //send request to you'r application to add new user token for push notifications
         }
     </script>
 
