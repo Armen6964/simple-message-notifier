@@ -32,16 +32,40 @@
  `;`
  
  `{` 
-     `intervalInSeconds : 2,` 
+     `intervalInSeconds : 2, //update messageing sheduling time` 
+ 
      `https : {`
+         
          `isEnabled : true, //enable or disable https`
+          
          `keys : {`
+     
              `ca : fs.readFileSync(__dirname+"/certs/ca.pem","utf-8"),` //setup path to your real ca.pem file
+             
              `private : fs.readFileSync(__dirname+"/certs/private.key","utf-8"),` //setup path to your real private.pem file
+            
              `cert : fs.readFileSync(__dirname+"/certs/cert.pem","utf-8")` //setup path to your real cert.pem file
+     
         `}`
+     
      `},`
  `};`
+
+
+<h3>Firebase google push notifications configurations</h3>
+
+<ol>
+  <li>open **https://console.developers.google.com/apis/credentials**</li>
+  <li>click **Create credentials** </li>
+  <li>choose from list service account</li>
+  <li>fill all fields and click **create**</li>
+  <li>setup roles and click **continue**</li>
+  <li>click **create key**</li>
+  <li>in right side popup choose json and press create</li>
+  <li>rename file to **google-configs.json**</li>
+  <li>copy file and past it to project **FirebaseMessaging/configs/** folder</li>
+</ol>
+
 
 
 <b>TODO list</b>
