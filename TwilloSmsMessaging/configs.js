@@ -1,8 +1,8 @@
 let configs = {
-    enabled : false,// enable after configuration
-    from : "+00000000000", //Your twillo number
+    enabled : true,// enable after configuration
+    from : "+19163474494", //Your twillo number
     accountSid : "ACd74a69e7a2f41e4a8931f9ce98ca4ee3", //Your twillo key,
-    authToken : "cc09f0e6a13aa0beb985c30efb49deee", //you twillo authToken
+    authToken : "66810936f43eb7e11fe8a3cfacf2655e", //you twillo authToken
 }
 
 module.exports  = configs;

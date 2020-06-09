@@ -15,10 +15,24 @@ const log = require("inologger");
 const {initSchedulingTypes} = require("./utils/index");
 const {serverHandler} = require("./utils/server");
 
+
 const config = require("./config/global");
 log.init(__dirname+"/log.log");
 
 const CLIENTS_LIVE = {};
+
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "*");
+    next();
+});
+
+app.use(express.json());
+app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 1000000}));
 
 if (config.https.isEnabled){
     log.info("ENABLING HTTPS SERVER");
@@ -28,14 +42,17 @@ if (config.https.isEnabled){
         cert: config.https.keys.cert,
         ca:config.https.keys.ca
     };
-    server = protocol.createServer(https_options,serverHandler)
+    server = protocol.createServer(https_options,app)
 }else{
     log.info("ENABLING HTTP SERVER");
     protocol = require("http");
-    server = protocol.createServer(serverHandler)
+    server = protocol.createServer(app)
 }
 
 server.listen(config.port);
+
+app.post("/add",serverHandler)
+
 
 const io = require("socket.io")(server);
 
@@ -75,7 +92,7 @@ function sendNotification(limit) {
             let item = data[i].dataValues;
             let SchedulingType = item.SchedulingType.name;
             let delivery = item.deliveryDate;
-            let recipients = item.recipients;
+            let recipients = JSON.parse(item.recipients);
             let sentData = {
                 title : item.title,
                 message : item.message,
@@ -83,6 +100,7 @@ function sendNotification(limit) {
             };
 
             if (item.tz.length > 1){
+
                 let d = new TZ(delivery,item.tz);
                 d.convert();
                 delivery  = d.date;
@@ -110,7 +128,7 @@ function sendNotification(limit) {
 
         }
     }).catch((err)=>{
-        log.error(err.message);
+        log.error(err);
     });
 }
 
@@ -130,19 +148,20 @@ function sendMessagesImmediately(recipients,data,row) {
 }
 
 function sendOfflineMessages(data,push_web,emails,phone_number) {
-    if (push_web.length > 0){
+    if (push_web && push_web.length > 0){
         Fb.sendPushForce(data, push_web).then(r =>{
             log.info("Push Sent");
         })
     }
 
-    if (emails.length > 0){
+    if (emails && emails.length > 0){
+        console.log("SENDING EMAIL...")
         Em.sendEmail("Notification", data.message, emails, data.title).then(r  =>{
             log.info("Email sent");
         });
     }
 
-    if (phone_number.length){
+    if (phone_number && phone_number.length){
         TSms.sendMessageForce(data.message, "+"+phone_number).then(r =>{log.info("Sms sent")});
     }
 }
@@ -217,7 +236,9 @@ function sendInYear(delivery,recipients,data,tz,row) {
 }
 
 
-setInterval(()=>{sendNotification()},config.intervalInSeconds  * 1000);
+setInterval(()=>{
+    sendNotification()
+},config.intervalInSeconds  * 1000);
 
 
 initDefaults();
